@@ -10,11 +10,12 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>My Library</h1>
+            <img id="logo" src="img/wolf-svgrepo-com.svg">
+            <h1>Wulf Library</h1>
         </div>
         <div class="main-content">
             <div class="content-header">
-                <h2>Library Table</h2>
+                <h2>Your Library</h2>
             </div>
             <table class="library-table">
                 <thead>
@@ -43,7 +44,7 @@
                         <input type="radio" name="choice" id="read" value="read" required>
                         <label for="unread">Unread</label>
                         <input type="radio" name="choice" id="unread" value="unread" required>
-                        <input type="button" id="filled" value="SUBMIT">
+                        <input disabled type="button" id="filled" value="SUBMIT">
                     </form>
                     <button id="newBook">NEW BOOK</button>
                 </div>

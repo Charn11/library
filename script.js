@@ -29,11 +29,11 @@ btn.addEventListener('click' , e => {
 //call display function
 let Sno = 1;
 let bookCount = 0;
+let datr = [];
 display();
 
 //display's the books in library
 function display(){
-    let datr = [];
     for(let i=bookCount;i<=myLibrary.length-1;i++)
     {
         datr[i] = document.createElement('tr');
@@ -43,12 +43,14 @@ function display(){
         for(let j=0;j<5;j++)
         {
             datd[j] = document.createElement('td');
+
             //display's serial number
             if(j==0)
             {
                 datd[j].innerText = Sno;
                 Sno++;
             }
+
             //display's data from object array
             else
             {
@@ -99,6 +101,48 @@ submit.addEventListener('click' , e => {
     //data add to object
     myLibrary[bookCount] = new Book(newTitle, newAuthor, newPages, newStatus);
     console.table(myLibrary);
+
+    //display new book
+    datr[bookCount] = document.createElement('tr');
+    datr[bookCount].setAttribute('id', bookCount);
+    document.getElementById('table-body').appendChild(datr[bookCount]);
+    let datd = [];
+        for(let j=0;j<5;j++)
+        {
+            datd[j] = document.createElement('td');
+
+            //display's serial number
+            if(j==0)
+            {
+                datd[j].innerText = Sno;
+                Sno++;
+            }
+
+            //display's data from object array
+            else
+            {
+                switch(j-1)
+                {
+                    case 0:
+                        datd[j].innerText = myLibrary[bookCount].title;
+                        console.log(datd[j]);
+                        break;
+                    case 1:
+                        datd[j].innerText = myLibrary[bookCount].author;
+                        console.log(datd[j]);
+                        break;
+                    case 2:
+                        datd[j].innerText = myLibrary[bookCount].pages;
+                        console.log(datd[j]);
+                        break;
+                    case 3:
+                        datd[j].innerText = myLibrary[bookCount].status;
+                        console.log(datd[j]);
+                        break;
+                }
+            }
+            document.getElementById(bookCount).appendChild(datd[j]);
+        }
     bookCount++;
 
     //option to add next book
@@ -106,4 +150,21 @@ submit.addEventListener('click' , e => {
     form.style.visibility='hidden';
     btn.style.visibility='visible';
 
+});
+
+//form submit button validation
+const checkTitle = document.getElementById('title');
+const checkAuthor = document.getElementById('author');
+const checkPages = document.getElementById('pages');
+const checkRadio = document.getElementsByName('choice');
+form.addEventListener('input', e => {
+    if(checkTitle.value!=""&&checkAuthor.value!=""&&checkPages.value!="")
+    {
+        if(document.getElementById('read').checked==true||document.getElementById('unread').checked==true)
+        submit.disabled = false;
+    }
+    else
+    {
+        submit.disabled = true;
+    }
 });
