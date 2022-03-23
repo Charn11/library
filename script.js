@@ -149,6 +149,7 @@ submit.addEventListener('click' , e => {
     document.getElementById('form').reset();
     form.style.visibility='hidden';
     btn.style.visibility='visible';
+    submit.disabled = true;
 
 });
 
