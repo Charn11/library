@@ -98,11 +98,24 @@ td:first-child, th:first-child {
     font-weight: bold;
     border-radius: 1em;
 }
-.form-1, .form-2, #filled{
-    margin: 10px 10px 0px 10px;
+.form-1, .form-2, #filled, #head-form{
+    margin: 10px;
     grid-column: 1/4;
     justify-self: center;
     align-self: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#head-form{
+    text-align: center;
+    grid-column: 2/3;
+    width: 100%;
+    margin-top: 20px;
+}
+h3{
+    text-align: center;
+    margin: 0;
+    display: flex;
+    justify-content: center;
 }
 .form-1>[id], .form-2>[id]{
     margin-right: 70px;
@@ -116,8 +129,20 @@ input{
     font-size: 15px;
     margin: 5px;
 }
+#x{
+    height: 20px;
+    width: 20px;
+    position: relative;
+    left: 500px;
+    border-radius: 50%;
+}
+#x:hover{
+    background-color: antiquewhite;
+}
 label{
     margin-left: 25px;
+    width: 60px;
+    display: inline-block;
 }
 input:focus{
     border: 1px solid yellow;
@@ -135,6 +160,8 @@ input:focus{
     font-family: Georgia, 'Times New Roman', Times, serif;
     grid-column: 2/3;
     padding: 12px;
+    width: 100%;
+    margin-bottom: 20px;
 }
 #filled:disabled{
     background-color: grey;
@@ -148,5 +175,10 @@ input:focus{
 .form-1{
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    position: relative;
+    right: 16px;
+}
+.form-2{
+    position: relative;
+    left: 20px;
 }

@@ -13,7 +13,7 @@ myLibrary[0] = new Book("The Great Gatsby", "F. Scott Fitzgerald", 152, "read");
 myLibrary[1] = new Book("To Kill a Mockingbird", "Harper Lee", 281, "unead");
 console.table(myLibrary);
 
-//listens for button click of NEW BOOK addition to library
+//listens for button click of ADD NEW BOOK addition to library
 let btn = document.getElementById('newBook');
 form.style.visibility='hidden';
 btn.addEventListener('click' , e => {
@@ -167,5 +167,16 @@ form.addEventListener('input', e => {
     else
     {
         submit.disabled = true;
+    }
+});
+
+//to close add new book
+const closeButton = document.getElementById('x');
+closeButton.addEventListener('click', e => {
+    const form = document.getElementById('form');
+    if(form.style.visibility==='visible')
+    {
+        form.style.visibility='hidden';
+        btn.style.visibility='visible';
     }
 });
