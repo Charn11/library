@@ -32,7 +32,7 @@ let bookCount = 0;
 let datr = [];
 display();
 
-//display's the books in library
+//display's the predefined books in library
 function display(){
     for(let i=bookCount;i<=myLibrary.length-1;i++)
     {
@@ -40,7 +40,7 @@ function display(){
         datr[i].setAttribute('id', i);
         document.getElementById('table-body').appendChild(datr[i]);
         let datd = [];
-        for(let j=0;j<5;j++)
+        for(let j=0;j<6;j++)
         {
             datd[j] = document.createElement('td');
 
@@ -50,7 +50,13 @@ function display(){
                 datd[j].innerText = Sno;
                 Sno++;
             }
-
+            else if(j==5)
+            {
+                let deleteIcon = document.createElement('img');
+                deleteIcon.setAttribute('src', 'img/icons8-delete.svg');
+                deleteIcon.setAttribute('class', 'icon');
+                datd[j].appendChild(deleteIcon);
+            }
             //display's data from object array
             else
             {
@@ -107,7 +113,7 @@ submit.addEventListener('click' , e => {
     datr[bookCount].setAttribute('id', bookCount);
     document.getElementById('table-body').appendChild(datr[bookCount]);
     let datd = [];
-        for(let j=0;j<5;j++)
+        for(let j=0;j<6;j++)
         {
             datd[j] = document.createElement('td');
 
@@ -117,7 +123,13 @@ submit.addEventListener('click' , e => {
                 datd[j].innerText = Sno;
                 Sno++;
             }
-
+            else if(j==5)
+            {
+                let deleteIcon = document.createElement('img');
+                deleteIcon.setAttribute('src', 'img/icons8-delete.svg');
+                deleteIcon.setAttribute('class', 'icon');
+                datd[j].appendChild(deleteIcon);
+            }
             //display's data from object array
             else
             {
@@ -151,6 +163,25 @@ submit.addEventListener('click' , e => {
     btn.style.visibility='visible';
     submit.disabled = true;
 
+    //tooltip for delete icon
+    let toolTip = document.querySelectorAll('.icon');
+    let tool = document.getElementsByClassName('.icon');
+    toolTip.forEach(tool => {
+    tool.addEventListener('mouseover', e=> {
+        tool.setAttribute('title', 'delete');
+        });
+    });
+
+    //delete book
+    let deleteBook = document.querySelectorAll('.icon');
+    let deleteThis = document.getElementsByClassName('.icon');
+    deleteBook.forEach(deleteThis => {
+        deleteThis.addEventListener('click', e => {
+        alert("yes");
+        deleteTheBook();
+        });
+    });
+
 });
 
 //form submit button validation
@@ -180,3 +211,26 @@ closeButton.addEventListener('click', e => {
         btn.style.visibility='visible';
     }
 });
+
+//tooltip for predfeined book delete icon
+let toolTip = document.querySelectorAll('.icon');
+let tool = document.getElementsByClassName('.icon');
+toolTip.forEach(tool => {
+    tool.addEventListener('mouseover', e=> {
+        tool.setAttribute('title', 'delete');
+    });
+});
+
+//delete predefined book
+let deleteBook = document.querySelectorAll('.icon');
+let deleteThis = document.getElementsByClassName('.icon');
+deleteBook.forEach(deleteThis => {
+    deleteThis.addEventListener('click', e => {
+        alert("yes");
+    });
+});
+
+//delete book function
+function deleteTheBook(){
+
+}

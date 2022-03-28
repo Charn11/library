@@ -48,6 +48,15 @@ table{
     overflow: hidden;
     border-spacing: 0px;
 }
+.icon{
+    background-color: antiquewhite;
+    width: 30px;
+    cursor: pointer;
+    
+}
+.icon:hover{
+    background-color: black;
+}
 thead>tr>th{
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
@@ -85,6 +94,7 @@ td:first-child, th:first-child {
 #newBook:hover{
     background-color: black;
     color: white;
+    cursor: pointer;
 }
 #form{
     display: grid;
@@ -107,15 +117,18 @@ td:first-child, th:first-child {
 }
 #head-form{
     text-align: center;
-    grid-column: 2/3;
     width: 100%;
     margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 h3{
     text-align: center;
     margin: 0;
-    display: flex;
     justify-content: center;
+    position: relative;
+    left: 30px;
 }
 .form-1>[id], .form-2>[id]{
     margin-right: 70px;
@@ -132,12 +145,14 @@ input{
 #x{
     height: 20px;
     width: 20px;
-    position: relative;
-    left: 500px;
+    position: sticky;
+    left: 1500px;
     border-radius: 50%;
+    margin-right: 50px;
 }
 #x:hover{
     background-color: antiquewhite;
+    cursor: pointer;
 }
 label{
     margin-left: 25px;
@@ -167,18 +182,21 @@ input:focus{
     background-color: grey;
     padding: 12px;
     grid-column: 2/3;
+    cursor: not-allowed;
 }
 #filled:hover:enabled{
     background-color: black;
     color: white;
+    cursor: pointer;
 }
 .form-1{
     display: flex;
     flex-wrap: wrap;
     position: relative;
-    right: 16px;
+    right: 12px;
 }
 .form-2{
+    display: flex;
     position: relative;
     left: 20px;
 }
