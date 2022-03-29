@@ -38,6 +38,7 @@ function display(){
     {
         datr[i] = document.createElement('tr');
         datr[i].setAttribute('id', i);
+        datr[i].setAttribute('data-row', i);
         document.getElementById('table-body').appendChild(datr[i]);
         let datd = [];
         for(let j=0;j<6;j++)
@@ -64,19 +65,19 @@ function display(){
                 {
                     case 0:
                         datd[j].innerText = myLibrary[i].title;
-                        console.log(datd[j]);
+                        //console.log(datd[j]);
                         break;
                     case 1:
                         datd[j].innerText = myLibrary[i].author;
-                        console.log(datd[j]);
+                        //console.log(datd[j]);
                         break;
                     case 2:
                         datd[j].innerText = myLibrary[i].pages;
-                        console.log(datd[j]);
+                        //console.log(datd[j]);
                         break;
                     case 3:
                         datd[j].innerText = myLibrary[i].status;
-                        console.log(datd[j]);
+                        //console.log(datd[j]);
                         break;
                 }
             }
@@ -137,19 +138,19 @@ submit.addEventListener('click' , e => {
                 {
                     case 0:
                         datd[j].innerText = myLibrary[bookCount].title;
-                        console.log(datd[j]);
+                        //console.log(datd[j]);
                         break;
                     case 1:
                         datd[j].innerText = myLibrary[bookCount].author;
-                        console.log(datd[j]);
+                        //console.log(datd[j]);
                         break;
                     case 2:
                         datd[j].innerText = myLibrary[bookCount].pages;
-                        console.log(datd[j]);
+                        //console.log(datd[j]);
                         break;
                     case 3:
                         datd[j].innerText = myLibrary[bookCount].status;
-                        console.log(datd[j]);
+                        //console.log(datd[j]);
                         break;
                 }
             }
@@ -227,10 +228,31 @@ let deleteThis = document.getElementsByClassName('.icon');
 deleteBook.forEach(deleteThis => {
     deleteThis.addEventListener('click', e => {
         alert("yes");
+        let parentBook = deleteThis.parentElement;
+        let gpBook = parentBook.parentElement;
+        deleteTheBook(gpBook.dataset.row);
     });
 });
 
-//delete book function
-function deleteTheBook(){
+//delete book from object function
+function deleteTheBook(index){
+    let newObj = myLibrary.filter((lib, ind) => ind!=index);
+    console.log(newObj);
+    myLibrary = newObj;
+    changeDataSet(index);
+    deleteRow(index);
+    console.log(myLibrary.length);
+    //console.table(myLibrary);
+}
+
+
+//delete rows in display
+function deleteRow(rowNum){
+    let tempNum = document.getElementById(rowNum);
+    tempNum.remove();
+}
+
+//to change data set after deletion
+function changeDataSet(index){
 
 }
