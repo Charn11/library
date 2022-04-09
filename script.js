@@ -39,6 +39,7 @@ function display(){
         datr[i] = document.createElement('tr');
         datr[i].setAttribute('id', i);
         datr[i].setAttribute('data-row', i);
+        datr[i].setAttribute('class','tr');
         document.getElementById('table-body').appendChild(datr[i]);
         let datd = [];
         for(let j=0;j<6;j++)
@@ -112,6 +113,8 @@ submit.addEventListener('click' , e => {
     //display new book
     datr[bookCount] = document.createElement('tr');
     datr[bookCount].setAttribute('id', bookCount);
+    datr[bookCount].setAttribute('data-row', bookCount);
+    datr[bookCount].setAttribute('class','tr');
     document.getElementById('table-body').appendChild(datr[bookCount]);
     let datd = [];
         for(let j=0;j<6;j++)
@@ -173,16 +176,7 @@ submit.addEventListener('click' , e => {
         });
     });
 
-    //delete book
-    let deleteBook = document.querySelectorAll('.icon');
-    let deleteThis = document.getElementsByClassName('.icon');
-    deleteBook.forEach(deleteThis => {
-        deleteThis.addEventListener('click', e => {
-        alert("yes");
-        deleteTheBook();
-        });
-    });
-
+    
 });
 
 //form submit button validation
@@ -222,12 +216,11 @@ toolTip.forEach(tool => {
     });
 });
 
-//delete predefined book
+//delete predefined book on select
 let deleteBook = document.querySelectorAll('.icon');
 let deleteThis = document.getElementsByClassName('.icon');
 deleteBook.forEach(deleteThis => {
     deleteThis.addEventListener('click', e => {
-        alert("yes");
         let parentBook = deleteThis.parentElement;
         let gpBook = parentBook.parentElement;
         deleteTheBook(gpBook.dataset.row);
@@ -239,8 +232,8 @@ function deleteTheBook(index){
     let newObj = myLibrary.filter((lib, ind) => ind!=index);
     console.log(newObj);
     myLibrary = newObj;
-    changeDataSet(index);
     deleteRow(index);
+    changeDataSet(index);
     console.log(myLibrary.length);
     //console.table(myLibrary);
 }
@@ -252,7 +245,19 @@ function deleteRow(rowNum){
     tempNum.remove();
 }
 
-//to change data set after deletion
-function changeDataSet(index){
-
+//to change data set and id after deletion
+function changeDataSet(newData){
+    let changeAtt = document.querySelectorAll(".tr");
+    let changePat = document.getElementsByClassName("tr");
+    let i=0;
+    changeAtt.forEach(changePat => {
+        changePat.setAttribute('id', i);
+        changePat.setAttribute('data-row',i);
+        changePat.firstChild.innerText = i+1;
+        i++;
+        console.log(i);
+        Sno=i+1;
+        bookCount=i;
+    });
+    i=0;
 }
