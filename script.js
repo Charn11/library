@@ -9,8 +9,8 @@ function Book(title, author, pages, status)
 
 //start
 let myLibrary = [];
-myLibrary[0] = new Book("The Great Gatsby", "F. Scott Fitzgerald", 152, "read");
-myLibrary[1] = new Book("To Kill a Mockingbird", "Harper Lee", 281, "unead");
+//myLibrary[0] = new Book("The Great Gatsby", "F. Scott Fitzgerald", 152, "read");
+//myLibrary[1] = new Book("To Kill a Mockingbird", "Harper Lee", 281, "unead");
 console.table(myLibrary);
 
 //listens for button click of ADD NEW BOOK addition to library
@@ -30,10 +30,10 @@ btn.addEventListener('click' , e => {
 let Sno = 1;
 let bookCount = 0;
 let datr = [];
-display();
+//display();
 
 //display's the predefined books in library
-function display(){
+/*function display(){
     for(let i=bookCount;i<=myLibrary.length-1;i++)
     {
         datr[i] = document.createElement('tr');
@@ -86,7 +86,7 @@ function display(){
         }
         bookCount++;
     }
-}
+}*/
 
 //fuction to add a book to library
 let submit = document.getElementById('filled');
@@ -175,7 +175,6 @@ submit.addEventListener('click' , e => {
         tool.setAttribute('title', 'delete');
         });
     });
-
     
 });
 
@@ -235,6 +234,11 @@ function deleteTheBook(index){
     deleteRow(index);
     changeDataSet(index);
     console.log(myLibrary.length);
+    if(myLibrary.length==0)
+    {
+        Sno=1;
+        bookCount=0;
+    }
     //console.table(myLibrary);
 }
 
@@ -245,7 +249,7 @@ function deleteRow(rowNum){
     tempNum.remove();
 }
 
-//to change data set and id after deletion
+//to change data set and id and serial no after deletion
 function changeDataSet(newData){
     let changeAtt = document.querySelectorAll(".tr");
     let changePat = document.getElementsByClassName("tr");
@@ -257,7 +261,7 @@ function changeDataSet(newData){
         i++;
         console.log(i);
         Sno=i+1;
-        bookCount=i;
+        bookCount=1;
     });
     i=0;
 }
