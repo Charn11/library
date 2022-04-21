@@ -175,7 +175,18 @@ submit.addEventListener('click' , e => {
         tool.setAttribute('title', 'delete');
         });
     });
-    
+
+    /*
+    //delete book
+    let deleteBook = document.querySelectorAll('.icon');
+    let deleteThis = document.getElementsByClassName('.icon');
+        deleteBook.forEach(deleteThis => {
+            deleteThis.addEventListener('click', e => {
+            let parentBook = deleteThis.parentElement;
+            let gpBook = parentBook.parentElement;
+            deleteTheBook(gpBook.dataset.row);
+            });
+    });*/
 });
 
 //form submit button validation
@@ -207,13 +218,13 @@ closeButton.addEventListener('click', e => {
 });
 
 //tooltip for predfeined book delete icon
-let toolTip = document.querySelectorAll('.icon');
+/*let toolTip = document.querySelectorAll('.icon');
 let tool = document.getElementsByClassName('.icon');
 toolTip.forEach(tool => {
     tool.addEventListener('mouseover', e=> {
         tool.setAttribute('title', 'delete');
     });
-});
+});*/
 
 //delete predefined book on select
 let deleteBook = document.querySelectorAll('.icon');
