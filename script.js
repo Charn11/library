@@ -176,17 +176,20 @@ submit.addEventListener('click' , e => {
         });
     });
 
-    /*
+    
     //delete book
+    
     let deleteBook = document.querySelectorAll('.icon');
     let deleteThis = document.getElementsByClassName('.icon');
+    let count=0;
         deleteBook.forEach(deleteThis => {
             deleteThis.addEventListener('click', e => {
             let parentBook = deleteThis.parentElement;
             let gpBook = parentBook.parentElement;
             deleteTheBook(gpBook.dataset.row);
+            count++;
             });
-    });*/
+    });
 });
 
 //form submit button validation
@@ -227,15 +230,7 @@ toolTip.forEach(tool => {
 });*/
 
 //delete predefined book on select
-let deleteBook = document.querySelectorAll('.icon');
-let deleteThis = document.getElementsByClassName('.icon');
-deleteBook.forEach(deleteThis => {
-    deleteThis.addEventListener('click', e => {
-        let parentBook = deleteThis.parentElement;
-        let gpBook = parentBook.parentElement;
-        deleteTheBook(gpBook.dataset.row);
-    });
-});
+
 
 //delete book from object function
 function deleteTheBook(index){
