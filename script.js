@@ -153,6 +153,10 @@ submit.addEventListener('click' , e => {
                         break;
                     case 3:
                         datd[j].innerText = myLibrary[bookCount].status;
+                        let changeStat = document.createElement('input');
+                        changeStat.setAttribute('type','checkbox');
+                        changeStat.setAttribute('id','check'+i);
+                        datd[j].appendChild(changeStat);
                         //console.log(datd[j]);
                         break;
                 }
@@ -271,3 +275,7 @@ function changeDataSet(newData){
     });
     i=0;
 }
+
+//change status if checked
+let selectCheck=document.querySelectorAll('input[type=checkbox]');
+
