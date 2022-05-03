@@ -180,18 +180,7 @@ submit.addEventListener('click' , e => {
     });
 
     
-    //delete book
-    
-    /*let deleteBook = document.querySelectorAll('.icon');
-    let deleteThis = document.getElementsByClassName('.icon');
-        deleteBook.forEach(deleteThis => {
-            deleteThis.addEventListener('click', e => {
-            let parentBook = deleteThis.parentElement;
-            let gpBook = parentBook.parentElement;
-            deleteTheBook(gpBook.dataset.row);
-            });
-    });*/
-    deleteStart();
+
 });
 
 //form submit button validation
@@ -222,38 +211,25 @@ closeButton.addEventListener('click', e => {
     }
 });
 
-//tooltip for predfeined book delete icon
-/*let toolTip = document.querySelectorAll('.icon');
-let tool = document.getElementsByClassName('.icon');
-toolTip.forEach(tool => {
-    tool.addEventListener('mouseover', e=> {
-        tool.setAttribute('title', 'delete');
-    });
-});*/
 
-//delete predefined book on select
-function deleteStart()
-{
-    let deleteBook = document.querySelectorAll('.icon');
-    let deleteThis = document.getElementsByClassName('.icon');
-        deleteBook.forEach(deleteThis => {
-            deleteThis.addEventListener('click', e => {
-            let parentBook = deleteThis.parentElement;
-            let gpBook = parentBook.parentElement;
-            deleteTheBook(gpBook.dataset.row);
-            });
-    });
-}
+//delete event
 
+let deleteBook = document.getElementsByClassName('icon');
+document.body.addEventListener('click', e => {
+    if(e.target.className=="icon")
+    {
+        let targ = e.target;
+        let parentElm = targ.parentElement;
+        let grandElm = parentElm.parentElement;
+        deleteTheBook(grandElm.dataset.row);
+    }
+});
 
 //delete book from object function
 function deleteTheBook(index){
-    let newObj = myLibrary.filter((lib, ind) => {
-        ind!=index;
-    });
+    let newObj = myLibrary.filter((lib, ind) => ind!=index);
     console.log(newObj);
     myLibrary = newObj;
-    alert("yes");
     deleteRow(index);
     changeDataSet(index);
     console.log(myLibrary.length);
@@ -282,11 +258,13 @@ function changeDataSet(newData){
         changePat.setAttribute('data-row',i);
         changePat.firstChild.innerText = i+1;
         i++;
+        console.log(i);
         Sno=i+1;
         bookCount=1;
     });
     i=0;
 }
 
-//change status if checked
+
+
 
