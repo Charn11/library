@@ -155,7 +155,6 @@ submit.addEventListener('click' , e => {
                         datd[j].innerText = myLibrary[bookCount].status;
                         let changeStat = document.createElement('input');
                         changeStat.setAttribute('type','checkbox');
-                        changeStat.setAttribute('id','check'+i);
                         datd[j].appendChild(changeStat);
                         //console.log(datd[j]);
                         break;
@@ -183,17 +182,16 @@ submit.addEventListener('click' , e => {
     
     //delete book
     
-    let deleteBook = document.querySelectorAll('.icon');
+    /*let deleteBook = document.querySelectorAll('.icon');
     let deleteThis = document.getElementsByClassName('.icon');
-    let count=0;
         deleteBook.forEach(deleteThis => {
             deleteThis.addEventListener('click', e => {
             let parentBook = deleteThis.parentElement;
             let gpBook = parentBook.parentElement;
             deleteTheBook(gpBook.dataset.row);
-            count++;
             });
-    });
+    });*/
+    deleteStart();
 });
 
 //form submit button validation
@@ -234,13 +232,28 @@ toolTip.forEach(tool => {
 });*/
 
 //delete predefined book on select
+function deleteStart()
+{
+    let deleteBook = document.querySelectorAll('.icon');
+    let deleteThis = document.getElementsByClassName('.icon');
+        deleteBook.forEach(deleteThis => {
+            deleteThis.addEventListener('click', e => {
+            let parentBook = deleteThis.parentElement;
+            let gpBook = parentBook.parentElement;
+            deleteTheBook(gpBook.dataset.row);
+            });
+    });
+}
 
 
 //delete book from object function
 function deleteTheBook(index){
-    let newObj = myLibrary.filter((lib, ind) => ind!=index);
+    let newObj = myLibrary.filter((lib, ind) => {
+        ind!=index;
+    });
     console.log(newObj);
     myLibrary = newObj;
+    alert("yes");
     deleteRow(index);
     changeDataSet(index);
     console.log(myLibrary.length);
@@ -269,7 +282,6 @@ function changeDataSet(newData){
         changePat.setAttribute('data-row',i);
         changePat.firstChild.innerText = i+1;
         i++;
-        console.log(i);
         Sno=i+1;
         bookCount=1;
     });
@@ -277,5 +289,4 @@ function changeDataSet(newData){
 }
 
 //change status if checked
-let selectCheck=document.querySelectorAll('input[type=checkbox]');
 
