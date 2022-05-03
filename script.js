@@ -155,6 +155,11 @@ submit.addEventListener('click' , e => {
                         datd[j].innerText = myLibrary[bookCount].status;
                         let changeStat = document.createElement('input');
                         changeStat.setAttribute('type','checkbox');
+                        changeStat.setAttribute('class', 'check');
+                        if(myLibrary[bookCount].status=="read")
+                        {
+                            changeStat.setAttribute('checked','true');
+                        }
                         datd[j].appendChild(changeStat);
                         //console.log(datd[j]);
                         break;
@@ -265,6 +270,14 @@ function changeDataSet(newData){
     i=0;
 }
 
-
-
-
+//change status on checkbox change
+let checkThis = document.getElementsByClassName('check');
+document.body.addEventListener('click', e=> {
+    if(e.target.className=="check")
+    {
+        if(e.target.checked)
+        {
+            
+        }
+    }
+});
