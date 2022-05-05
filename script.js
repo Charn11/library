@@ -30,63 +30,6 @@ btn.addEventListener('click' , e => {
 let Sno = 1;
 let bookCount = 0;
 let datr = [];
-//display();
-
-//display's the predefined books in library
-/*function display(){
-    for(let i=bookCount;i<=myLibrary.length-1;i++)
-    {
-        datr[i] = document.createElement('tr');
-        datr[i].setAttribute('id', i);
-        datr[i].setAttribute('data-row', i);
-        datr[i].setAttribute('class','tr');
-        document.getElementById('table-body').appendChild(datr[i]);
-        let datd = [];
-        for(let j=0;j<6;j++)
-        {
-            datd[j] = document.createElement('td');
-
-            //display's serial number
-            if(j==0)
-            {
-                datd[j].innerText = Sno;
-                Sno++;
-            }
-            else if(j==5)
-            {
-                let deleteIcon = document.createElement('img');
-                deleteIcon.setAttribute('src', 'img/icons8-delete.svg');
-                deleteIcon.setAttribute('class', 'icon');
-                datd[j].appendChild(deleteIcon);
-            }
-            //display's data from object array
-            else
-            {
-                switch(j-1)
-                {
-                    case 0:
-                        datd[j].innerText = myLibrary[i].title;
-                        //console.log(datd[j]);
-                        break;
-                    case 1:
-                        datd[j].innerText = myLibrary[i].author;
-                        //console.log(datd[j]);
-                        break;
-                    case 2:
-                        datd[j].innerText = myLibrary[i].pages;
-                        //console.log(datd[j]);
-                        break;
-                    case 3:
-                        datd[j].innerText = myLibrary[i].status;
-                        //console.log(datd[j]);
-                        break;
-                }
-            }
-            document.getElementById(i).appendChild(datd[j]);
-        }
-        bookCount++;
-    }
-}*/
 
 //fuction to add a book to library
 let submit = document.getElementById('filled');
@@ -275,9 +218,30 @@ let checkThis = document.getElementsByClassName('check');
 document.body.addEventListener('click', e=> {
     if(e.target.className=="check")
     {
+        let targMark = e.target;
+        let parElm = targMark.parentElement;
+        let GapElm = parElm.parentElement;
+        let statusRow = GapElm.dataset.row;
         if(e.target.checked)
         {
-            
+            myLibrary[statusRow].status = "read";
+            let changeStatus = document.getElementById(statusRow);
+            changeStatus.childNodes[4].innerText = myLibrary[statusRow].status;
+            let changedCheck = document.createElement('input');
+            changedCheck.setAttribute('type','checkbox');
+            changedCheck.setAttribute('class', 'check');
+            changedCheck.setAttribute('checked', 'true');
+            changeStatus.childNodes[4].appendChild(changedCheck);
+        }
+        else //when unchecked
+        {
+            myLibrary[statusRow].status = "unread";
+            let changeStatus = document.getElementById(statusRow);
+            changeStatus.childNodes[4].innerText = myLibrary[statusRow].status;
+            let changedCheck = document.createElement('input');
+            changedCheck.setAttribute('type','checkbox');
+            changedCheck.setAttribute('class', 'check');
+            changeStatus.childNodes[4].appendChild(changedCheck);
         }
     }
 });
